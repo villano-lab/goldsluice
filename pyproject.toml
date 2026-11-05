@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "goldsluice"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fast pulse-reduction kernels in Rust, with a Python mirror of every algorithm"
 readme = "README.md"
 license = "MIT"
