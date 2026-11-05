@@ -1,7 +1,7 @@
 # goldsluice
 
 Fast pulse-reduction kernels in Rust, with a **Python mirror of every algorithm**. It is the reduction half of the pair that
-`goldpan` (analysis, in `../python/`) belongs to. It is in its first steps: ten algorithms, `peak`, `max_time`, `baseline`, `integral`, `window_integral`, `excursion`, `rise_time` and `rise_crossing` (issue 155), which reduce a trace to numbers, and two that return a trace, `subtract_line` and `lowpass`.
+[`goldpan`](https://github.com/villano-lab/goldpan) (analysis) belongs to. It was `goldsluice/` of [NSDF-Data](https://github.com/villano-lab/NSDF-Data) until 2026-11-05 (the history is kept), and `goldsluice` and `goldpan` are published on PyPI. **Install it:** `python -m pip install goldsluice` (a wheel for Windows, macOS and Linux; no Rust needed), with `goldsluice[batch]` for batch mode. To work on it: `CONTRIBUTING.md`. It is in its first steps: ten algorithms, `peak`, `max_time`, `baseline`, `integral`, `window_integral`, `excursion`, `rise_time` and `rise_crossing` (issue 155), which reduce a trace to numbers, and two that return a trace, `subtract_line` and `lowpass`.
 
 ```python
 from goldsluice import run, compare
@@ -19,14 +19,14 @@ Nothing about the readout is assumed: `amps_per_adc`, `glitch_samples` and `pret
 
 ## Batch mode: a dataset definition, processed in one command
 
-The developer quick-sheet `docs/developers/goldsluice-batch.pdf` is the guide to this section.
+The developer quick-sheet `goldsluice-batch.pdf` (in `docs/developers/` of NSDF-Data) is the guide to this section.
 
 Datasets are defined once, in a TOML file that `goldpan` and `goldsluice` both read (`goldpan.dataset`; its docstring is the
 specification and `examples/r76.dataset.toml` an example): the raw files and how to read them (any `goldpan` adapter, the
 readout), and the processing steps with every parameter written down.
 
 ```
-pip install -e ../python[parquet]                    # batch mode reads the data with goldpan
+pip install goldsluice[batch]                          # batch mode reads the data with goldpan (from PyPI)
 python -m goldsluice check r76.dataset.toml          # read the definition, list the raw files
 python -m goldsluice run r76.dataset.toml            # process what is new or changed (--chunk, --force, --workers N, --readahead N, --replace, --backend python)
 ```
@@ -77,7 +77,7 @@ slower by a factor of ten or more.
 
 ## Writing an algorithm
 
-Write the Python mirror first, then port it to Rust, then register both. The developer quick-sheet `docs/developers/goldsluice-algorithm.pdf` walks through it with an example; **`PORTING.md`** is the reference, with the rules the Python
+Write the Python mirror first, then port it to Rust, then register both. The developer quick-sheet `goldsluice-algorithm.pdf` (in `docs/developers/` of NSDF-Data) walks through it with an example; **`PORTING.md`** is the reference, with the rules the Python
 must follow so that the port is mechanical, a table of the equivalent Python and Rust, and a checklist.
 
 ## Timing
