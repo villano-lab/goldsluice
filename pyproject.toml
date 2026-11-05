@@ -4,12 +4,18 @@ build-backend = "maturin"
 
 [project]
 name = "goldsluice"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fast pulse-reduction kernels in Rust, with a Python mirror of every algorithm"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.9"
 dependencies = ["numpy>=1.26"]
+
+[project.urls]
+Homepage = "https://github.com/villano-lab/goldsluice"
+Documentation = "https://villano-lab.github.io/NSDF-Data/api/"
+Repository = "https://github.com/villano-lab/goldsluice"
+Changelog = "https://github.com/villano-lab/goldsluice/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 test = ["pytest"]

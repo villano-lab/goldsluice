@@ -1,0 +1,16 @@
+# Rust build output and the compiled extension
+target/
+python/goldsluice/_core*
+*.so
+*.pyd
+dist/
+build/
+*.egg-info/
+__pycache__/
+.pytest_cache/
+
+# Processed output of `python -m goldsluice run` (Parquet files and the ledger _goldsluice.json): results, not source. A dataset
+# definition writes outside the repository by default; `goldsluice check` and `run` refuse an output folder inside a Git working tree that
+# does not ignore these.
+processed/
+_goldsluice.json

@@ -446,12 +446,12 @@ def test_the_example_writes_outside_the_repository_and_the_repository_ignores_pr
     import subprocess
     from pathlib import Path
     from goldpan import dataset
-    root = Path(__file__).resolve().parents[2]
-    example = root / "goldsluice" / "examples" / "r76.dataset.toml"
+    root = Path(__file__).resolve().parents[1]
+    example = root / "examples" / "r76.dataset.toml"
     if not example.exists() or not (root / ".git").exists() or shutil.which("git") is None:
         pytest.skip("not in a Git checkout of the repository")
     assert root.resolve() not in dataset.load(example).output.resolve().parents
-    probe = root / "goldsluice" / "examples" / "processed" / "x" / "_probe.parquet"
+    probe = root / "examples" / "processed" / "x" / "_probe.parquet"
     assert subprocess.run(["git", "check-ignore", "-q", "--", str(probe)], cwd=root).returncode == 0
 
 
