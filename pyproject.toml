@@ -13,7 +13,7 @@ dependencies = ["numpy>=1.26"]
 
 [project.urls]
 Homepage = "https://github.com/villano-lab/goldsluice"
-Documentation = "https://villano-lab.github.io/NSDF-Data/api/"
+Documentation = "https://villano-lab.github.io/goldsluice/"
 Repository = "https://github.com/villano-lab/goldsluice"
 Changelog = "https://github.com/villano-lab/goldsluice/blob/main/CHANGELOG.md"
 
