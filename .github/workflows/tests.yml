@@ -1,0 +1,77 @@
+name: tests
+
+# Builds and tests the Rust pulse-reduction kernels on Windows, macOS and Linux: rustfmt and clippy, the Rust unit tests, then the
+# Python package built with maturin and the parity test (every algorithm has a Rust kernel and a Python mirror that agree).
+# Rust is already on the runners. Batch mode reads datasets with goldpan, which comes from PyPI (pyproject.toml, extra `batch`).
+# A test also needs a folder of detector records, which is data in NSDF-Data and not part of the package, so the job checks out NSDF-Data
+# (`main`) for its registry/ folder only. A weekly run tells when a new release of goldpan or numpy breaks goldsluice.
+
+on:
+  pull_request:
+  push:
+    branches: [main, develop]
+  schedule:
+    - cron: "41 6 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: tests (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out the detector registry (NSDF-Data, main)
+        uses: actions/checkout@v4
+        with:
+          repository: villano-lab/NSDF-Data
+          ref: main
+          path: nsdf
+          sparse-checkout: registry
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Cache Rust build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: goldsluice-${{ runner.os }}-${{ hashFiles('Cargo.toml', 'Cargo.lock') }}
+
+      - name: rustfmt and clippy
+        run: |
+          cargo fmt --check
+          cargo clippy --all-targets -- -D warnings
+
+      - name: Rust tests
+        run: cargo test
+
+      - name: Build the wheel and install it with goldpan from PyPI
+        run: |
+          python -m pip install maturin pytest numpy
+          python -m pip install "goldpan[parquet]>=0.3"          # batch mode reads datasets with goldpan
+          maturin build --release --out dist
+          python -m pip install --no-index --find-links dist goldsluice
+
+      - name: Parity and batch tests
+        env:
+          GOLDSLUICE_TEST_REGISTRY: ${{ github.workspace }}/nsdf/registry
+        run: python -m pytest tests -q -rs
+
+      - name: Timing (informational)
+        run: python -c "import numpy as np, goldsluice; print(goldsluice.compare('peak', np.random.default_rng(0).normal(2000, 5, (5000, 4096)), glitch_samples=10, pretrigger_samples=1000, amps_per_adc=1e-9))"
