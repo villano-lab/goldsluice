@@ -6,7 +6,9 @@ goldsluice was the folder `goldsluice/` of [NSDF-Data](https://github.com/villan
 
 ## [Unreleased]
 
-The first release made from this repository. The code is the same as 0.1.0; what changes is where goldsluice lives and how it is published. `pip install goldsluice` is unchanged.
+## [0.1.1] - 2026-11-05
+
+The first release made from this repository. The code is the same as 0.1.0 (`git diff v0.1.0` shows no change in `src/`, `benches/` or `python/` apart from the version number); what changes is where goldsluice lives and how it is published. `pip install goldsluice` is unchanged.
 
 ### Added
 
