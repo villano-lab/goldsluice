@@ -2,5 +2,5 @@
 from .algorithms import ALGORITHMS, run
 from .profile import compare
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __all__ = ["ALGORITHMS", "run", "compare"]
