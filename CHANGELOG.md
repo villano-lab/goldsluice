@@ -6,6 +6,14 @@ goldsluice was the folder `goldsluice/` of [NSDF-Data](https://github.com/villan
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-11-06
+
+No change to the code: the package is the code of 0.1.2. This release publishes the guide pages of the documentation.
+
+### Changed
+
+- The guides *Batch mode* and *Running goldsluice and developing an algorithm* are pages of this documentation (`docs/guides/`); they were quick-sheets of NSDF-Data. The guide *Writing an adapter* is in the goldpan documentation.
+
 ## [0.1.2] - 2026-11-05
 
 No change to the code: the package is the code of 0.1.1. This release carries the new documentation address in its metadata.
