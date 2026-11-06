@@ -1,6 +1,6 @@
 [package]
 name = "goldsluice"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 description = "Fast pulse-reduction kernels in Rust, with a Python mirror of every algorithm"
 license = "MIT"
