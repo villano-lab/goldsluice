@@ -19,7 +19,7 @@ Nothing about the readout is assumed: `amps_per_adc`, `glitch_samples` and `pret
 
 ## Batch mode: a dataset definition, processed in one command
 
-The developer quick-sheet `goldsluice-batch.pdf` (in `docs/developers/` of NSDF-Data) is the guide to this section.
+The guide [Batch mode](https://villano-lab.github.io/goldsluice/guides/batch.html) in the documentation covers this section.
 
 Datasets are defined once, in a TOML file that `goldpan` and `goldsluice` both read (`goldpan.dataset`; its docstring is the
 specification and `examples/r76.dataset.toml` an example): the raw files and how to read them (any `goldpan` adapter, the
@@ -77,7 +77,7 @@ slower by a factor of ten or more.
 
 ## Writing an algorithm
 
-Write the Python mirror first, then port it to Rust, then register both. The developer quick-sheet `goldsluice-algorithm.pdf` (in `docs/developers/` of NSDF-Data) walks through it with an example; **`PORTING.md`** is the reference, with the rules the Python
+Write the Python mirror first, then port it to Rust, then register both. The guide [Running goldsluice and developing an algorithm](https://villano-lab.github.io/goldsluice/guides/algorithm.html) walks through it with an example; **`PORTING.md`** is the reference, with the rules the Python
 must follow so that the port is mechanical, a table of the equivalent Python and Rust, and a checklist.
 
 ## Timing
