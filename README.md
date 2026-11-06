@@ -1,7 +1,7 @@
 # goldsluice
 
 Fast pulse-reduction kernels in Rust, with a **Python mirror of every algorithm**. It is the reduction half of the pair that
-[`goldpan`](https://github.com/villano-lab/goldpan) (analysis) belongs to. It was `goldsluice/` of [NSDF-Data](https://github.com/villano-lab/NSDF-Data) until 2026-11-05 (the history is kept), and `goldsluice` and `goldpan` are published on PyPI. **Install it:** `python -m pip install goldsluice` (a wheel for Windows, macOS and Linux; no Rust needed), with `goldsluice[batch]` for batch mode. To work on it: `CONTRIBUTING.md`. It is in its first steps: ten algorithms, `peak`, `max_time`, `baseline`, `integral`, `window_integral`, `excursion`, `rise_time` and `rise_crossing` (issue 155), which reduce a trace to numbers, and two that return a trace, `subtract_line` and `lowpass`.
+[`goldpan`](https://github.com/villano-lab/goldpan) (analysis) belongs to. It was `goldsluice/` of [NSDF-Data](https://github.com/villano-lab/NSDF-Data) until 2026-11-05 (the history is kept), and `goldsluice` and `goldpan` are published on PyPI. **Install it:** `python -m pip install goldsluice` (a wheel for Windows, macOS and Linux; no Rust needed), with `goldsluice[batch]` for batch mode. **Documentation:** https://villano-lab.github.io/goldsluice/ (the reference is read from the docstrings). To work on it: `CONTRIBUTING.md`. It is in its first steps: ten algorithms, `peak`, `max_time`, `baseline`, `integral`, `window_integral`, `excursion`, `rise_time` and `rise_crossing` (issue 155), which reduce a trace to numbers, and two that return a trace, `subtract_line` and `lowpass`.
 
 ```python
 from goldsluice import run, compare

@@ -14,3 +14,7 @@ __pycache__/
 # does not ignore these.
 processed/
 _goldsluice.json
+
+# Built documentation
+docs/_build/
+docs/reference/generated/

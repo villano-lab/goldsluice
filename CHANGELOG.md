@@ -6,6 +6,14 @@ goldsluice was the folder `goldsluice/` of [NSDF-Data](https://github.com/villan
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-11-05
+
+No change to the code: the package is the code of 0.1.1. This release carries the new documentation address in its metadata.
+
+### Added
+
+- The documentation of goldsluice (Sphinx, `docs/`): how the pieces fit, guides, and the reference read from the docstrings (the Python mirrors document the algorithms, so the Rust extension is not built), at https://villano-lab.github.io/goldsluice/. A workflow builds it with warnings as errors for every pull request that touches `docs/`, `python/` or `pyproject.toml`, and deploys it to GitHub Pages when a release reaches `main` (or when run by hand). It replaces the pages `docs/api/` that NSDF-Data built from this package. The *Documentation* link of the package on PyPI points here from 0.1.2 (the release before it keeps the old NSDF-Data address, where a page now says the documentation moved).
+
 ## [0.1.1] - 2026-11-05
 
 The first release made from this repository. The code is the same as 0.1.0 (`git diff v0.1.0` shows no change in `src/`, `benches/` or `python/` apart from the version number); what changes is where goldsluice lives and how it is published. `pip install goldsluice` is unchanged.

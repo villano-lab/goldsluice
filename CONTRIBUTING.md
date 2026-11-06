@@ -29,6 +29,8 @@ maturin develop --release                    # builds the extension into the act
 cargo test && python -m pytest tests -q
 ```
 
+The documentation (`docs/`, Sphinx) is built for every pull request that touches `docs/`, `python/` or `pyproject.toml`, with warnings as errors, and published at https://villano-lab.github.io/goldsluice/ when a release reaches `main`. To build it on your computer (the Rust extension is not needed): `python -m pip install -r docs/requirements.txt`, `python -m pip install numpy "goldpan[parquet]>=0.3"`, then `python -m sphinx -b html -W --keep-going docs docs/_build/html`.
+
 One test needs a folder of detector records (the registry): set `GOLDSLUICE_TEST_REGISTRY` to the `registry/` folder of a clone of NSDF-Data, or it is skipped.
 
 ## A feature
